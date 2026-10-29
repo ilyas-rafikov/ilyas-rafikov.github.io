@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ильяс — съёмка, моушн, монтаж</title>
+<meta name="description" content="Ильяс — видеооператор, моушн-дизайнер и видеомонтажёр. Съёмки в Казани, монтаж и моушн удалённо.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600&family=Onest:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#0e0f12; --surface:#16181d; --line:#262931; --fg:#ecebe6; --muted:#8d9099;
+  --cam:#e3b05f; --mo:#7fc4b8; --ed:#c99be6;
+  --display:"Unbounded","Arial Black",system-ui,sans-serif;
+  --body:"Onest",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.55}
+a{color:inherit}
+[hidden]{display:none!important}
+.wrap{max-width:1120px;margin:0 auto;padding:32px 20px 64px;display:flex;flex-direction:column;gap:80px}
+.label{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+
+/* top */
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.top nav{display:flex;gap:18px;flex-wrap:wrap}
+.top a{text-decoration:none}.top a:hover{color:var(--fg)}
+.rec{display:inline-flex;align-items:center;gap:8px}
+.rec::before{content:"";width:8px;height:8px;border-radius:50%;background:#e5484d;animation:blink 1.6s steps(2,start) infinite}
+@keyframes blink{to{visibility:hidden}}
+
+/* hero */
+.hero{display:flex;flex-direction:column;gap:28px}
+.hero h1{font-family:var(--display);font-weight:600;font-size:clamp(40px,8.4vw,104px);line-height:.95;letter-spacing:-.03em;margin:0}
+.hero h1 .c{color:var(--cam)}.hero h1 .m{color:var(--mo)}.hero h1 .e{color:var(--ed)}
+.lede{max-width:46ch;font-size:clamp(18px,2.2vw,21px);margin:0}
+.lede em{font-style:normal;color:var(--muted)}
+.facts{display:flex;gap:10px;flex-wrap:wrap}
+.fact{font-family:var(--mono);font-size:12px;letter-spacing:.04em;border:1px solid var(--line);border-radius:999px;padding:6px 12px;color:var(--fg)}
+.cta-row{display:flex;gap:10px;flex-wrap:wrap}
+
+/* multitrack timeline */
+.timeline{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:14px 0;display:flex;flex-direction:column;gap:6px;position:relative}
+.ruler{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums;padding-left:76px}
+.row{display:flex;align-items:center;gap:8px;height:28px}
+.row .name{width:68px;flex:none;font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.06em}
+.lane{flex:1;display:flex;gap:3px;height:100%;min-width:0}
+.clip{border-radius:3px;display:flex;align-items:center;padding:0 8px;font-family:var(--mono);font-size:11px;white-space:nowrap;overflow:hidden;min-width:0;color:var(--bg)}
+.gap{background:transparent}
+.cam .clip:not(.gap){background:var(--cam)}.mo .clip:not(.gap){background:var(--mo)}.ed .clip:not(.gap){background:var(--ed)}
+.playhead{position:absolute;top:8px;bottom:8px;left:calc(76px + (100% - 76px)*.42);width:2px;background:var(--fg)}
+.playhead::before{content:"";position:absolute;top:0;left:-5px;border:6px solid transparent;border-top-color:var(--fg)}
+
+/* roles */
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;margin-bottom:28px}
+.sec-head h2{font-family:var(--display);font-weight:400;font-size:28px;margin:4px 0 0;letter-spacing:-.01em}
+.roles{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.role{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:22px;display:flex;flex-direction:column;gap:12px;border-top:3px solid var(--k)}
+.role h3{margin:0;font-family:var(--display);font-weight:400;font-size:20px}
+.role .where{font-family:var(--mono);font-size:12px;color:var(--k)}
+.role ul{margin:0;padding-left:18px;color:var(--muted);font-size:15px;display:flex;flex-direction:column;gap:4px}
+.kit{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}.kit>div{border:1px solid var(--line);border-radius:8px;padding:16px 20px}.kit p{margin:6px 0 0}@media (max-width:860px){.kit{grid-template-columns:1fr}}
+.role.cam{--k:var(--cam)}.role.mo{--k:var(--mo)}.role.ed{--k:var(--ed)}
+
+/* filters */
+.filters{display:flex;gap:6px;flex-wrap:wrap}
+.filters button{font:500 14px var(--body);color:var(--muted);background:transparent;border:1px solid var(--line);border-radius:999px;padding:7px 14px;cursor:pointer;display:inline-flex;gap:8px;align-items:center}
+.filters button small{font-family:var(--mono);font-size:11px;opacity:.7}
+.filters button:hover{color:var(--fg);border-color:var(--muted)}
+.filters button[aria-pressed="true"]{color:var(--bg);background:var(--fg);border-color:var(--fg)}
+button:focus-visible,a:focus-visible{outline:2px solid var(--cam);outline-offset:3px}
+
+/* works */
+.works{display:grid;grid-template-columns:repeat(12,1fr);gap:40px 24px}
+.work{grid-column:span 6;display:flex;flex-direction:column;gap:14px;min-width:0}
+.work.wide{grid-column:span 8}.work.vertical{grid-column:span 4}
+.player{aspect-ratio:16/9;border-radius:6px;overflow:hidden;background:#000;border:1px solid var(--line)}
+.vertical .player{aspect-ratio:9/16}
+.player video{display:block;width:100%;height:100%;object-fit:contain;background:#000}
+.meta{display:flex;flex-direction:column;gap:8px;min-width:0}
+.meta .tag{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.04em}
+.meta h3{margin:0;font-weight:500;font-size:18px;line-height:1.35;text-wrap:balance}
+.meta p{margin:0;color:var(--muted);font-size:14px}
+.credits{display:flex;gap:6px;flex-wrap:wrap}
+.credit{font-family:var(--mono);font-size:11px;letter-spacing:.04em;padding:3px 9px;border-radius:999px;border:1px solid var(--k);color:var(--k)}
+.credit.cam{--k:var(--cam)}.credit.mo{--k:var(--mo)}.credit.ed{--k:var(--ed)}
+.ext{color:var(--fg);text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px}
+.ext:hover{text-decoration-color:var(--cam)}
+
+/* process */
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;counter-reset:s}
+.step{border-top:1px solid var(--line);padding-top:14px;counter-increment:s}
+.step::before{content:"0" counter(s);font-family:var(--mono);font-size:12px;color:var(--muted)}
+.step h3{margin:6px 0 6px;font-size:17px;font-weight:500}
+.step p{margin:0;color:var(--muted);font-size:14px}
+
+/* contact */
+.contact{border-top:1px solid var(--line);padding-top:40px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end}
+.contact h2{font-family:var(--display);font-weight:600;font-size:clamp(30px,5.4vw,52px);line-height:1.02;letter-spacing:-.02em;margin:8px 0 16px;text-wrap:balance}
+.contact .direct{margin-top:12px;color:var(--fg);font-family:var(--mono);font-size:14px}.contact .direct a{text-decoration:none}.contact .direct a:hover{text-decoration:underline}
+.contact p{margin:0;color:var(--muted);max-width:50ch}
+.handle{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:10px;font:500 16px var(--body);border-radius:999px;padding:12px 20px;text-decoration:none;cursor:pointer;border:1px solid var(--line);background:transparent;color:var(--fg)}
+.btn:hover{border-color:var(--muted)}
+.btn.primary{background:var(--fg);border-color:var(--fg);color:var(--bg)}
+.tg{font-family:var(--mono);user-select:all}
+footer{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+@media (max-width:860px){
+  .roles{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  .work,.work.wide{grid-column:span 12}
+  .work.vertical{grid-column:3/span 8}
+  .contact{grid-template-columns:1fr}
+}
+@media (max-width:520px){
+  .steps{grid-template-columns:1fr}
+  .work.vertical{grid-column:span 12}
+  .clip.opt{display:none}
+}
+@media (prefers-reduced-motion:reduce){.rec::before{animation:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top label">
+    <span class="rec">Ильяс · видео под ключ</span>
+    <nav>
+      <a href="#works">Работы</a>
+      <a href="#roles">Что делаю</a>
+      <a href="#contact">Контакты</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1><span class="c">Снимаю.</span><br><span class="m">Анимирую.</span><br><span class="e">Монтирую.</span></h1>
+    <p class="lede">Видеооператор, моушн-дизайнер и видеомонтажёр. Все ролики ниже я сделал сам от начала до конца: камера, свет и звук на площадке, плашки и анимация, монтаж. <em>Собираю видео так, чтобы его досматривали.</em></p>
+    <div class="facts">
+      <span class="fact">Съёмки — Казань</span>
+      <span class="fact">Монтаж и моушн — удалённо</span>
+      <span class="fact">Shorts · подкасты · длинный формат</span>
+    </div>
+    <div class="cta-row">
+      <a class="btn primary" href="#works">Смотреть работы</a>
+      <a class="btn" href="https://t.me/RAIL1384" target="_blank" rel="noopener">Telegram @RAIL1384</a>
+    </div>
+    <div class="timeline" aria-hidden="true">
+      <div class="ruler"><span>00:00</span><span>00:15</span><span>00:30</span><span>00:45</span><span>01:00</span></div>
+      <div class="row cam"><span class="name">V1 КАМЕРА</span><div class="lane"><div class="clip" style="flex:1.4">крупный</div><div class="clip" style="flex:1.1">общий</div><div class="clip opt" style="flex:.8">деталь</div><div class="clip" style="flex:1.7">интервью</div></div></div>
+      <div class="row mo"><span class="name">V2 МОУШН</span><div class="lane"><div class="clip gap" style="flex:.5"></div><div class="clip" style="flex:.9">плашка</div><div class="clip gap" style="flex:.6"></div><div class="clip" style="flex:1.3">инфографика</div><div class="clip gap opt" style="flex:.7"></div><div class="clip" style="flex:.9">титры</div></div></div>
+      <div class="row ed"><span class="name">A1 МОНТАЖ</span><div class="lane"><div class="clip" style="flex:1">хук</div><div class="clip" style="flex:2.6">основной монтаж</div><div class="clip opt" style="flex:.9">звук</div><div class="clip" style="flex:.8">CTA</div></div></div>
+      <div class="playhead"></div>
+    </div>
+  </section>
+
+  <section id="works" aria-labelledby="works-h">
+    <div class="sec-head">
+      <div><div class="label">Работы</div><h2 id="works-h">Избранное</h2></div>
+      <div class="filters" role="group" aria-label="Фильтр по формату">
+        <button data-f="all" aria-pressed="true">Все <small>4</small></button>
+        <button data-f="short" aria-pressed="false">Короткий формат <small>1</small></button>
+        <button data-f="pod" aria-pressed="false">Подкаст <small>1</small></button>
+        <button data-f="long" aria-pressed="false">Длинный формат <small>2</small></button>
+      </div>
+    </div>
+
+    <div class="works">
+      <article class="work wide" data-f="long">
+        <div class="player"><video controls playsinline preload="none" poster="smm-portfolio.jpg"><source src="smm-portfolio.mp4" type="video/mp4"></video></div>
+        <div class="meta">
+          <span class="tag">Длинный формат · фрагмент 2:10</span>
+          <h3>Как собрать портфолио SMM с нуля</h3>
+          <div class="credits"><span class="credit cam">камера · свет · звук</span><span class="credit mo">графика и анимация</span><span class="credit ed">монтаж</span></div>
+          <p>Карина Тагирова · <a class="ext" href="https://www.youtube.com/watch?v=IOqIt_5o9fo" target="_blank" rel="noopener">полная версия на YouTube ↗</a></p>
+        </div>
+      </article>
+
+      <article class="work vertical" data-f="short">
+        <div class="player"><video controls playsinline preload="none" poster="shorts.jpg"><source src="shorts.mp4" type="video/mp4"></video></div>
+        <div class="meta">
+          <span class="tag">Короткий формат · 9:16 · 0:34</span>
+          <h3>Плохую картинку простят, а это нет. Главный секрет YouTube</h3>
+          <div class="credits"><span class="credit cam">камера · свет · звук</span><span class="credit mo">плашки</span><span class="credit ed">монтаж</span></div>
+          <p>БИБОСС Business Lab · <a class="ext" href="https://www.youtube.com/shorts/B-uWyyKu-B4" target="_blank" rel="noopener">на YouTube ↗</a></p>
+        </div>
+      </article>
+
+      <article class="work" data-f="long">
+        <div class="player"><video controls playsinline preload="none" poster="sora.jpg"><source src="sora.mp4" type="video/mp4"></video></div>
+        <div class="meta">
+          <span class="tag">Длинный формат · фрагмент 1:40</span>
+          <h3>Создавай вирусные видео в Sora 2 бесплатно. Полный гайд с нуля</h3>
+          <div class="credits"><span class="credit cam">камера · свет · звук</span><span class="credit mo">графика и анимация</span><span class="credit ed">монтаж</span></div>
+          <p>Ринат Сулейманов · AITron · <a class="ext" href="https://www.youtube.com/watch?v=UAQAiO32mCw" target="_blank" rel="noopener">полная версия ↗</a></p>
+        </div>
+      </article>
+
+      <article class="work" data-f="pod">
+        <div class="player"><video controls playsinline preload="none" poster="podcast.jpg"><source src="podcast.mp4" type="video/mp4"></video></div>
+        <div class="meta">
+          <span class="tag">Подкаст · мультикамера · фрагмент 2:00</span>
+          <h3>Как открыть клинику капельниц и сделать миллионы на биохакинге. Роман Культин, BIORISE</h3>
+          <div class="credits"><span class="credit cam">мультикамерная съёмка · свет · звук</span><span class="credit mo">плашки</span><span class="credit ed">монтаж</span></div>
+          <p>БИБОСС · Реальный бизнес и цифры · <a class="ext" href="https://www.youtube.com/watch?v=AdYgMAeayCs" target="_blank" rel="noopener">полная версия ↗</a></p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="roles" aria-labelledby="roles-h">
+    <div class="sec-head"><div><div class="label">Что делаю</div><h2 id="roles-h">Три роли — один человек</h2></div></div>
+    <div class="roles">
+      <article class="role cam">
+        <span class="where">Казань · выезд на площадку</span>
+        <h3>Видеооператор</h3>
+        <ul><li>Интервью, экспертные ролики, подкасты</li><li>Мультикамерная съёмка</li><li>Постановка света</li><li>Запись звука на площадке</li></ul>
+      </article>
+      <article class="role mo">
+        <span class="where">Удалённо</span>
+        <h3>Моушн-дизайнер</h3>
+        <ul><li>Плашки, титры, подписи</li><li>Инфографика и анимированные схемы</li><li>Графика в едином стиле канала</li></ul>
+      </article>
+      <article class="role ed">
+        <span class="where">Удалённо</span>
+        <h3>Видеомонтажёр</h3>
+        <ul><li>Shorts и Reels с сильным хуком</li><li>Подкасты с нескольких камер</li><li>Длинные ролики для YouTube</li><li>Чистка и сведение звука</li></ul>
+      </article>
+    </div>
+    <div class="kit">
+      <div><span class="label">Техника</span><p>Sony FX30 · DJI Osmo Pocket 3 · стабилизатор DJI Ronin · петлички DJI и Godox · свет · штатив</p></div>
+      <div><span class="label">Софт</span><p>Final Cut Pro · Adobe After Effects</p></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="proc-h">
+    <div class="sec-head"><div><div class="label">Процесс</div><h2 id="proc-h">Как работаю</h2></div></div>
+    <div class="steps">
+      <div class="step"><h3>Бриф</h3><p>Задача, площадка, формат и сроки.</p></div>
+      <div class="step"><h3>Съёмка</h3><p>Камера, свет и звук. Если исходники уже есть, сразу к монтажу.</p></div>
+      <div class="step"><h3>Монтаж</h3><p>Структура, хук, темп, звук.</p></div>
+      <div class="step"><h3>Графика</h3><p>Плашки, титры и анимация под стиль проекта.</p></div>
+      <div class="step"><h3>Сдача</h3><p>Правки и экспорт под нужные площадки.</p></div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact" aria-labelledby="contact-h">
+    <div>
+      <div class="label">Контакты</div>
+      <h2 id="contact-h">Нужно снять, анимировать или смонтировать?</h2>
+      <p>Напишите или позвоните: что за проект, формат и сроки. Отвечу и предложу, как его сделать.</p>
+      <p class="direct"><a href="tel:+79277563133">+7 927 756-31-33</a> · <a href="mailto:rafikov_ily@mail.ru">rafikov_ily@mail.ru</a></p>
+    </div>
+    <div class="handle">
+      <a class="btn primary" href="https://t.me/RAIL1384" target="_blank" rel="noopener">Написать в Telegram</a>
+      <button class="btn" id="copy" type="button"><span class="tg">@RAIL1384</span><span id="copy-state" class="label">копировать</span></button>
+      <a class="btn" href="https://kazan.hh.ru/resume/1de0389dff0c55d47f0039ed1f584a6b596336" target="_blank" rel="noopener">Резюме на hh.ru</a>
+    </div>
+  </section>
+
+  <footer><span>© 2026 Ильяс</span><span>Съёмка · Моушн · Монтаж</span></footer>
+</div>
+
+<script>
+(function(){
+  var buttons=document.querySelectorAll('.filters button'), works=document.querySelectorAll('.work');
+  function apply(f){
+    buttons.forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.f===f))});
+    works.forEach(function(w){w.hidden=!(f==='all'||w.dataset.f===f)});
+  }
+  buttons.forEach(function(b){b.addEventListener('click',function(){apply(b.dataset.f)})});
+  // только одно видео играет одновременно
+  var vids=document.querySelectorAll('video');
+  vids.forEach(function(v){v.addEventListener('play',function(){vids.forEach(function(o){if(o!==v)o.pause()})})});
+  var copy=document.getElementById('copy'), state=document.getElementById('copy-state');
+  copy.addEventListener('click',function(){
+    var done=function(){state.textContent='скопировано';setTimeout(function(){state.textContent='копировать'},1800)};
+    var fallback=function(){var r=document.createRange();r.selectNodeContents(copy.querySelector('.tg'));var s=getSelection();s.removeAllRanges();s.addRange(r);state.textContent='выделено'};
+    try{navigator.clipboard.writeText('@RAIL1384').then(done,fallback)}catch(e){fallback()}
+  });
+})();
+</script>
+</body>
+</html>
